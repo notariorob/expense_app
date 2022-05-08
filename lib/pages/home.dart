@@ -41,9 +41,9 @@ class _HomeState extends State<Home> {
     Transaction(
       id: 't4',
       title: 'Jewelry',
-      amount: 500000.00,
+      amount: 125.55,
       date: DateTime.now().subtract(
-        const Duration(days: 1),
+        const Duration(days: 4),
       ),
     ),
   ];
@@ -93,26 +93,29 @@ class _HomeState extends State<Home> {
         onPressed: () => _startAddTransaction(context),
         child: const Icon(Icons.add),
       ),
-      body: _transactions.isEmpty
-          ? Image.asset(
-              'assets/images/no-data.png',
-            )
-          : Column(
-              children: [
-                Container(
-                  width: double.infinity,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                  child: Chart(transactions: _recentTransactions),
-                ),
-                SizedBox(
-                  width: double.infinity,
-                  child: TransactionList(
-                    transactions: _transactions,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+        child: _transactions.isEmpty
+            ? Image.asset(
+                'assets/images/no-data.png',
+              )
+            : Column(
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    child: Chart(
+                      transactions: _recentTransactions,
+                    ),
                   ),
-                )
-              ],
-            ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: TransactionList(
+                      transactions: _transactions,
+                    ),
+                  )
+                ],
+              ),
+      ),
     );
   }
 }
