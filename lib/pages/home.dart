@@ -55,14 +55,14 @@ class _HomeState extends State<Home> {
         .toList();
   }
 
-  void _addTransaction(String title, double amount) {
+  void _addTransaction(String title, double amount, DateTime date) {
     setState(() {
       _transactions.add(
         Transaction(
             id: '${DateTime.now()}-title',
             amount: amount,
             title: title,
-            date: DateTime.now()),
+            date: date),
       );
       _transactions.sort((a, b) => b.date.compareTo(a.date));
     });
