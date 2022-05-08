@@ -46,6 +46,30 @@ class _HomeState extends State<Home> {
         const Duration(days: 4),
       ),
     ),
+    Transaction(
+      id: 't5',
+      title: 'Test1',
+      amount: 15.45,
+      date: DateTime.now().subtract(
+        const Duration(days: 4),
+      ),
+    ),
+    Transaction(
+      id: 't6',
+      title: 'Test2',
+      amount: 25.05,
+      date: DateTime.now().subtract(
+        const Duration(days: 4),
+      ),
+    ),
+    Transaction(
+      id: 't7',
+      title: 'Test3',
+      amount: 100.00,
+      date: DateTime.now().subtract(
+        const Duration(days: 12),
+      ),
+    ),
   ];
 
   List<Transaction> get _recentTransactions {
@@ -65,6 +89,12 @@ class _HomeState extends State<Home> {
             date: date),
       );
       _transactions.sort((a, b) => b.date.compareTo(a.date));
+    });
+  }
+
+  void _deleteTransaction(String id) {
+    setState(() {
+      _transactions.removeWhere((transaction) => transaction.id == id);
     });
   }
 
@@ -107,10 +137,13 @@ class _HomeState extends State<Home> {
                       transactions: _recentTransactions,
                     ),
                   ),
-                  SizedBox(
-                    width: double.infinity,
-                    child: TransactionList(
-                      transactions: _transactions,
+                  Expanded(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: TransactionList(
+                        transactions: _transactions,
+                        onDelete: _deleteTransaction,
+                      ),
                     ),
                   )
                 ],

@@ -3,8 +3,10 @@ import 'package:expense_app/models/transaction.dart';
 import 'package:intl/intl.dart';
 
 class TransactionListItem extends StatelessWidget {
+  final VoidCallback onDelete;
   final Transaction transaction;
-  const TransactionListItem({Key? key, required this.transaction})
+  const TransactionListItem(
+      {Key? key, required this.transaction, required this.onDelete})
       : super(key: key);
 
   @override
@@ -27,6 +29,11 @@ class TransactionListItem extends StatelessWidget {
           DateFormat.yMMMd().format(
             transaction.date,
           ),
+        ),
+        trailing: IconButton(
+          icon: const Icon(Icons.delete),
+          color: Theme.of(context).errorColor,
+          onPressed: onDelete,
         ),
       ),
     );

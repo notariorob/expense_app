@@ -4,18 +4,18 @@ import 'package:expense_app/models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
-  const TransactionList({Key? key, required this.transactions})
+  final Function onDelete;
+  const TransactionList(
+      {Key? key, required this.transactions, required this.onDelete})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 300,
-      child: ListView.builder(
-        itemCount: transactions.length,
-        itemBuilder: (context, index) => TransactionListItem(
-          transaction: transactions[index],
-        ),
+    return ListView.builder(
+      itemCount: transactions.length,
+      itemBuilder: (context, index) => TransactionListItem(
+        transaction: transactions[index],
+        onDelete: () => onDelete(transactions[index].id),
       ),
     );
   }
