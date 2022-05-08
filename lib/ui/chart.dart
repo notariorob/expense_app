@@ -42,7 +42,7 @@ class Chart extends StatelessWidget {
                 fit: FlexFit.tight,
                 child: ChartBar(
                     label: val['day'] as String,
-                    amount: val['amount'].toString(),
+                    amount: (val['amount'] as double).toInt().toString(),
                     ratio: (val['amount'] as double) / _totalSpent),
               ),
             ),

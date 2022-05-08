@@ -15,7 +15,12 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(label),
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 12,
+          ),
+        ),
         const SizedBox(
           height: 10,
         ),
@@ -49,6 +54,9 @@ class ChartBar extends StatelessWidget {
         FittedBox(
           child: Text(
             '$amount €',
+            style: const TextStyle(
+              fontSize: 12,
+            ),
           ),
         )
       ],
