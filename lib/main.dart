@@ -2,6 +2,10 @@ import 'package:expense_app/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  // restrict to portrait mode and run app
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations(
+  //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 
@@ -11,8 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      home: Home(title: 'Flutter Demo Home Page'),
+      title: 'Expenses App',
+      home: const Home(title: 'Expenses'),
       theme: ThemeData(
         primarySwatch: Colors.indigo,
         fontFamily: 'Quicksand',

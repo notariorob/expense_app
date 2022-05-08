@@ -6,7 +6,7 @@ import 'package:expense_app/ui/transaction_list.dart';
 
 class Home extends StatefulWidget {
   final String title;
-  Home({Key? key, required this.title}) : super(key: key);
+  const Home({Key? key, required this.title}) : super(key: key);
 
   @override
   State<Home> createState() => _HomeState();
@@ -129,25 +129,47 @@ class _HomeState extends State<Home> {
             ? Image.asset(
                 'assets/images/no-data.png',
               )
-            : Column(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    child: Chart(
-                      transactions: _recentTransactions,
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: TransactionList(
-                        transactions: _transactions,
-                        onDelete: _deleteTransaction,
+            : MediaQuery.of(context).orientation == Orientation.portrait
+                ? Column(
+                    children: [
+                      SizedBox(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.width * 0.4,
+                        child: Chart(
+                          transactions: _recentTransactions,
+                        ),
                       ),
-                    ),
+                      Expanded(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: TransactionList(
+                            transactions: _transactions,
+                            onDelete: _deleteTransaction,
+                          ),
+                        ),
+                      )
+                    ],
                   )
-                ],
-              ),
+                : Row(
+                    children: [
+                      SizedBox(
+                        height: double.infinity,
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: Chart(
+                          transactions: _recentTransactions,
+                        ),
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: TransactionList(
+                            transactions: _transactions,
+                            onDelete: _deleteTransaction,
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
       ),
     );
   }
