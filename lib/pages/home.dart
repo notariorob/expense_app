@@ -68,7 +68,7 @@ class _HomeState extends State<Home> {
     });
   }
 
-  void _startAddTransaction(BuildContext context) {
+  void _startAddTransaction() {
     showModalBottomSheet(
       context: context,
       builder: (buildContext) =>
@@ -83,14 +83,14 @@ class _HomeState extends State<Home> {
         title: Text(widget.title),
         actions: [
           IconButton(
-            onPressed: () => _startAddTransaction(context),
+            onPressed: _startAddTransaction,
             icon: const Icon(Icons.add),
           ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () => _startAddTransaction(context),
+        onPressed: _startAddTransaction,
         child: const Icon(Icons.add),
       ),
       body: Padding(
