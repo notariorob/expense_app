@@ -52,6 +52,7 @@ class _TransactionFormState extends State<TransactionForm> {
           horizontal: 12,
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             TextField(

@@ -100,9 +100,15 @@ class _HomeState extends State<Home> {
 
   void _startAddTransaction() {
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
-      builder: (buildContext) =>
-          TransactionForm(onAddTransaction: _addTransaction),
+      builder: (buildContext) => SingleChildScrollView(
+        child: Padding(
+          padding:
+              EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+          child: TransactionForm(onAddTransaction: _addTransaction),
+        ),
+      ),
     );
   }
 
